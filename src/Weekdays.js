@@ -6,8 +6,8 @@ import Col from "react-bootstrap/Col";
 export default function Weekdays(props) {
   return (
     <Row>
-      <Col sm={5} md={4}>
-        <Card className="mb-4">
+      <Col md-4 sm-5>
+        <Card className="mb-4 ">
           <div className="Weekdays Card text-center">
             <div className="Card-body">
               <Card.Title className="Card-title"></Card.Title>
