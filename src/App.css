@@ -1,5 +1,120 @@
-.App {
+a {
+  color: black;
+  cursor: default;
+  text-decoration: none;
+}
+
+h1 {
+  padding-top: 40px;
+  font-weight: bold;
+  font-size: 30px;
+  margin-bottom: 0;
+}
+li {
+  list-style: none;
+}
+li:first-letter {
+  text-transform: capitalize;
+}
+ul {
+  margin: 0 0 10px;
+  padding: 0;
+}
+
+button {
+  border-radius: 8px;
+  display: Block;
+  margin: 0;
+}
+
+button:hover {
+  background: linear-gradient(
+    89deg,
+    rgb(21, 74, 189) 0.1%,
+    rgb(26, 138, 211) 51.5%,
+    rgb(72, 177, 234) 100.2%
+  );
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+Footer {
+  opacity: 0.7;
   text-align: center;
+}
+
+.currentTemperature {
+  font-weight: bold;
+  font-size: 35px;
+}
+.staticTemperature {
+  font-size: 30px;
+  padding: 10px;
+}
+
+.units {
+  position: relative;
+  font-size: 16px;
+  top: -12px;
+}
+
+.card:hover {
+  background: linear-gradient(
+    89deg,
+    rgb(21, 74, 189) 0.1%,
+    rgb(26, 138, 211) 51.5%,
+    rgb(72, 177, 234) 100.2%
+  );
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+.container {
+  background: linear-gradient(
+    89deg,
+    rgb(21, 74, 189) 0.1%,
+    rgb(26, 138, 211) 51.5%,
+    rgb(72, 177, 234) 100.2%
+  );
+  max-width: 600px;
+  margin: 30px auto;
+  border: 1px solid blue;
+  border-radius: 5px;
+}
+
+.weather-app {
+  padding: 20px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.low-temperature {
+  padding-top: 40px;
+}
+
+.chance {
+  padding-top: 40px;
+}
+
+.nightfall {
+  padding-top: 40px;
+}
+
+.input-group {
+  margin-top: 30px;
+}
+.location {
+  margin-top: 20px;
+}
+
+.emoji {
+  font-size: 60px;
+}
+.d-flex {
+  margin-bottom: 40px;
+}
+
+.weather-temperature-min {
+  opacity: 0.7;
 }
 
 .App-logo {
@@ -11,17 +126,6 @@
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
   }
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
 }
 
 .App-link {
