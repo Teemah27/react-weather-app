@@ -1,4 +1,5 @@
-import React from "react";
+import React, { useState } from "react";
+import Geolocation from "./Geolocation";
 
 export default function Current() {
   let cityInfo = {
@@ -8,8 +9,35 @@ export default function Current() {
     lastUpdated: "Saturday, 20:22",
   };
 
+  let [city, setCity] = useState();
+  function handleSubmit(event) {
+    event.preventDefault();
+    alert(`Searching for ${city}`);
+  }
+
+  function updateCity(event) {
+    setCity(event.target.value);
+  }
+
   return (
     <div className="current">
+      <form id="search-form" onSubmit={handleSubmit}>
+        <div class="input-group">
+          <input
+            type="search"
+            className="form-control shadow-sm"
+            placeholder="Enter a city"
+            id="search-text-input"
+            onChange={updateCity}
+          />
+          <input
+            type="submit"
+            className="btn btn-outline-dark shadow-sm"
+            value="Search"
+          />
+        </div>
+        <Geolocation />
+      </form>
       <div className="row">
         <div className="col-6">
           <h1 id="city">{cityInfo.City}</h1>
@@ -26,7 +54,9 @@ export default function Current() {
           </span>
           <span className="units">
             °C
-            <li className="staticTemperature" id="description"></li>
+            <li className="staticTemperature" id="description">
+              Mostly Cloudy
+            </li>
           </span>
         </div>
       </div>

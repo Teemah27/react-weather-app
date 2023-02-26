@@ -1,6 +1,6 @@
 import React from "react";
 
-function Weatherapp() {
+function Weather() {
   let weatherData = {
     High: "19",
     Low: "4",
@@ -47,4 +47,4 @@ function Weatherapp() {
     </div>
   );
 }
-export default Weatherapp;
+export default Weather;
