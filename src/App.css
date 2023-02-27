@@ -43,19 +43,31 @@ Footer {
   text-align: center;
 }
 
-.current .currentTemperature {
+.WeatherInfo .currentTemperature {
   font-weight: bold;
   font-size: 35px;
 }
-.current .staticTemperature {
+.WeatherInfo .staticTemperature {
   font-size: 30px;
   padding: 10px;
 }
 
-.current .units {
+.WeatherInfo .units {
   position: relative;
   font-size: 16px;
   top: -12px;
+}
+
+.WeatherInfo .low-temperature {
+  padding-top: 40px;
+}
+
+.WeatherInfo .chance {
+  padding-top: 40px;
+}
+
+.WeatherInfo .nightfall {
+  padding-top: 40px;
 }
 
 .card:hover {
@@ -88,18 +100,6 @@ Footer {
   font-family: Helvetica, Arial, sans-serif;
 }
 
-.Weatherapp .low-temperature {
-  padding-top: 40px;
-}
-
-.Weatherapp .chance {
-  padding-top: 40px;
-}
-
-.Weatherapp .nightfall {
-  padding-top: 40px;
-}
-
 .input-group {
   margin-top: 20px;
 }
@@ -114,6 +114,6 @@ Footer {
   margin-bottom: 40px;
 }
 
-.Weekdays .weekly-forecast-temperature-min {
+.ForecastDay .WeatherForecast-temperature-min {
   opacity: 0.7;
 }
