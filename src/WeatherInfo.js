@@ -31,8 +31,8 @@ export default function WeatherInfo(props) {
       <hr />
       <div className="row">
         <div className="col-4">
-          <div className="temperature">now</div>
-          <span id="high">{props.data.current}</span>°
+          <div className="temperature">Now</div>
+          <span id="current">{props.data.temperature}</span>°
         </div>
 
         <div className="col-4">
