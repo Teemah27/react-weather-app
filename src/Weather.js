@@ -5,23 +5,30 @@ import Forecast from "./Forecast";
 
 export default function Weather(props) {
   const [weatherData, setWeatherData] = useState({ ready: false });
-  const [city, setCity] = useState(props.city);
+  const [city, setCity] = useState(props.defaultCity);
 
   function handleResponse(response) {
     setWeatherData({
       ready: true,
-      coordinates: response.data.coord,
-      low: response.data.main.temp_min,
-      high: response.data.main.temp_max,
-      humidity: response.data.main.humidity,
-      date: new Date(response.data.dt * 1000),
-      description: response.data.weather[0].description,
-      icon: response.data.weather[0].icon,
+      date: new Date(response.data.time * 1000),
+      coordinates: response.data.coordinates,
+      feels_like: response.data.temperature.feels_like,
+      temperature: response.data.temperature.current,
+
+      humidity: response.data.temperature.humidity,
+      description: response.data.condition.description,
+      icon: response.data.condition.icon,
       wind: response.data.wind.speed,
-      city: response.data.name,
+      city: response.data.city,
       sunset: new Date(response.data.sys.sunset * 1000),
       sunrise: new Date(response.data.sys.sunrise * 1000),
     });
+  }
+
+  function search() {
+    const apiKey = "0bfcc322553aoc7t2693d43b93fcef4e";
+    let apiUrl = `https://api.shecodes.io/weather/v1/current?query=${city}&key=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
   }
 
   function handleSubmit(event) {
@@ -32,15 +39,9 @@ export default function Weather(props) {
     setCity(event.target.value);
   }
 
-  function search() {
-    const apiKey = "af12a2daa1c4c04cebdde84de8f2f6a6";
-    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   if (weatherData.ready) {
     return (
-      <div className="current">
+      <div className="Weather">
         <form id="search-form" onSubmit={handleSubmit}>
           <div class="input-group">
             <input
@@ -63,6 +64,6 @@ export default function Weather(props) {
     );
   } else {
     search();
-    return "Loading...";
+    return `Loading...`;
   }
 }

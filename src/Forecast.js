@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 
 import ForecastDay from "./ForecastDay";
 import axios from "axios";
-import Card from "react-bootstrap/Card";
 
 export default function Forecast(props) {
   let [loaded, setLoaded] = useState(false);
@@ -17,15 +16,6 @@ export default function Forecast(props) {
     setLoaded(true);
   }
 
-  function load() {
-    let apiKey = "af12a2daa1c4c04cebdde84de8f2f6a6";
-    let longitude = props.coordinates.lon;
-    let latitude = props.coordinates.lat;
-    let apiUrl = `https://api.openweathermap.org/data/2.5/onecall?lat=${latitude}&lon=${longitude}&appid=${apiKey}&units=metric`;
-
-    axios.get(apiUrl).then(handleResponse);
-  }
-
   if (loaded) {
     return (
       <div className="Forecast">
@@ -33,13 +23,13 @@ export default function Forecast(props) {
           {forecast.map(function (dailyForecast, index) {
             if (index < 5) {
               return (
-                <Card>
-                  <div className="col-md-4 col-sm-5" key={index}>
-                    <div className="col" key={index}>
+                <div className="col" key={index}>
+                  <div className="card text-center">
+                    <div className="card-body">
                       <ForecastDay data={dailyForecast} />
                     </div>
                   </div>
-                </Card>
+                </div>
               );
             } else {
               return null;
@@ -49,8 +39,11 @@ export default function Forecast(props) {
       </div>
     );
   } else {
-    load();
+    let apiKey = "0bfcc322553aoc7t2693d43b93fcef4e";
+    let longitude = props.coordinates.longitude;
+    let latitude = props.coordinates.latitude;
+    let apiUrl = `https://api.shecodes.io/weather/v1/forecast?lon=${longitude}&lat=${latitude}&key=${apiKey}`;
 
-    return null;
+    axios.get(apiUrl).then(handleResponse);
   }
 }

@@ -8,7 +8,7 @@ export default function WeatherInfo(props) {
     <div className="WeatherInfo">
       <div className="row">
         <div className="col-6">
-          <h1 id="city">{props.data.city}</h1>
+          <h1>{props.data.city}</h1>
           <ul>
             <li>
               <FormattedDate date={props.data.date} />
@@ -32,7 +32,7 @@ export default function WeatherInfo(props) {
       <div className="row">
         <div className="col-4">
           <div className="temperature">High</div>
-          <span id="high">{props.data.high}</span>°
+          <span id="high">{props.data.max}</span>°
         </div>
 
         <div className="col-4">
@@ -47,7 +47,7 @@ export default function WeatherInfo(props) {
 
         <div className="col-4">
           <div className="low-temperature">Low</div>
-          <span id="low">{props.data.low}</span>°
+          <span id="low">{props.data.min}</span>°
         </div>
 
         <div className="col-4">
