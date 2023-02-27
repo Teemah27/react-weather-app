@@ -11,28 +11,28 @@ export default function WeatherInfo(props) {
           <h1>{props.data.city}</h1>
           <ul>
             <li>
-              <FormattedDate date={props.data.date} />
+              Last updated: <FormattedDate date={props.data.date} />
             </li>
           </ul>
         </div>
         <div className="col-6">
-          <WeatherIcon code={props.data.icon} size={52} />
+          <WeatherIcon code={props.data.icon} size={52} alt={props.data.icon} />
           <span className="currentTemperature" id="temp">
             <Temperature celsius={props.data.temperature} />
           </span>
           <span className="units">
-            °C
-            <li className="staticTemperature" id="description">
-              {props.data.description}
-            </li>
+            °C| <a href="/">°F</a>
           </span>
+          <li className="staticTemperature" id="description">
+            {props.data.description}
+          </li>
         </div>
       </div>
       <hr />
       <div className="row">
         <div className="col-4">
-          <div className="temperature">High</div>
-          <span id="high">{props.data.max}</span>°
+          <div className="temperature">now</div>
+          <span id="high">{props.data.current}</span>°
         </div>
 
         <div className="col-4">
@@ -41,13 +41,13 @@ export default function WeatherInfo(props) {
         </div>
 
         <div className="col-4">
-          <div className="daytime">Sunrise</div>
-          <span id="bright">{props.data.sunrise}</span>
+          <div className="low-temperature">Low</div>
+          <span id="low">{props.data.min}</span>°
         </div>
 
         <div className="col-4">
-          <div className="low-temperature">Low</div>
-          <span id="low">{props.data.min}</span>°
+          <div className="pressure">Pressure</div>
+          <span id="bright">{props.data.pressure}</span>
         </div>
 
         <div className="col-4">
@@ -56,8 +56,8 @@ export default function WeatherInfo(props) {
         </div>
 
         <div className="col-4">
-          <div className="nightfall">Sunset</div>
-          <span id="dark">{props.data.sunset}</span>
+          <div className="feel">Feels Like</div>
+          <span id="dark">{props.data.feels_like}</span>
         </div>
       </div>
       <hr />

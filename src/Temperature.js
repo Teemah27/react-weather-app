@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import WeatherIcon from "./WeatherIcon";
 
 export default function Temperature(props) {
   const [unit, setUnit] = useState("celsius");
@@ -17,11 +18,11 @@ export default function Temperature(props) {
   if (unit === "celsius") {
     return (
       <div className="WeatherUnit d-inline">
+        <WeatherIcon code={props.data.icon} size={52} alt={props.data.icon} />
         <span className="degrees">{Math.round(props.celsius)}</span>
-        <span className="unit">
-          °C |{" "}
+        <span className="units">
           <a href="/" onClick={setFahrenheit}>
-            °F
+            {" "}
           </a>{" "}
         </span>
       </div>
@@ -32,9 +33,8 @@ export default function Temperature(props) {
         <span className="degrees">{Math.round(unit)}</span>
         <span className="unit">
           <a href="/" onClick={setCelsius}>
-            C°
+            {" "}
           </a>
-          | °F{" "}
         </span>
       </div>
     );

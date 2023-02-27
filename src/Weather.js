@@ -14,14 +14,12 @@ export default function Weather(props) {
       coordinates: response.data.coordinates,
       feels_like: response.data.temperature.feels_like,
       temperature: response.data.temperature.current,
-
+      pressure: response.data.temperature.pressure,
       humidity: response.data.temperature.humidity,
       description: response.data.condition.description,
-      icon: response.data.condition.icon,
+      icon: response.data.condition.icon_url,
       wind: response.data.wind.speed,
       city: response.data.city,
-      sunset: new Date(response.data.sys.sunset * 1000),
-      sunrise: new Date(response.data.sys.sunrise * 1000),
     });
   }
 
