@@ -1,50 +1,68 @@
-import React from "react";
+import React, { useState } from "react";
+import axios from "axios";
+import WeatherInfo from "./WeatherInfo";
+import Forecast from "./Forecast";
 
-function Weather() {
-  let weatherData = {
-    High: "19",
-    Low: "4",
-    Sunrise: "05.45",
-    Sunset: "20:45",
-    Humidity: 80,
-    Wind: 10,
-  };
-  return (
-    <div className="Weatherapp">
-      <hr />
-      <div className="row">
-        <div className="col-4">
-          <div className="temperature">High</div>
-          <span id="high">{weatherData.High}</span>°
-        </div>
+export default function Weather(props) {
+  const [weatherData, setWeatherData] = useState({ ready: false });
+  const [city, setCity] = useState(props.city);
 
-        <div className="col-4">
-          <div className="speed">Wind</div>
-          <span id="wind">{weatherData.Wind}</span> m/s
-        </div>
+  function handleResponse(response) {
+    setWeatherData({
+      ready: true,
+      coordinates: response.data.coord,
+      low: response.data.main.temp_min,
+      high: response.data.main.temp_max,
+      humidity: response.data.main.humidity,
+      date: new Date(response.data.dt * 1000),
+      description: response.data.weather[0].description,
+      icon: response.data.weather[0].icon,
+      wind: response.data.wind.speed,
+      city: response.data.name,
+      sunset: new Date(response.data.sys.sunset * 1000),
+      sunrise: new Date(response.data.sys.sunrise * 1000),
+    });
+  }
 
-        <div className="col-4">
-          <div className="daytime">Sunrise</div>
-          <span id="bright">{weatherData.Sunrise}</span>
-        </div>
+  function handleSubmit(event) {
+    event.preventDefault();
+    search();
+  }
+  function handleCity(event) {
+    setCity(event.target.value);
+  }
 
-        <div className="col-4">
-          <div className="low-temperature">Low</div>
-          <span id="low">{weatherData.Low}</span>°
-        </div>
+  function search() {
+    const apiKey = "af12a2daa1c4c04cebdde84de8f2f6a6";
+    let apiUrl = `https://api.openweathermap.org/data/2.5/weather?q=${city}&appid=${apiKey}&units=metric`;
+    axios.get(apiUrl).then(handleResponse);
+  }
 
-        <div className="col-4">
-          <div className="chance">Humidity</div>
-          <span id="humidity">{weatherData.Humidity}</span>%
-        </div>
-
-        <div className="col-4">
-          <div className="nightfall">Sunset</div>
-          <span id="dark">{weatherData.Sunset}</span>
-        </div>
+  if (weatherData.ready) {
+    return (
+      <div className="current">
+        <form id="search-form" onSubmit={handleSubmit}>
+          <div class="input-group">
+            <input
+              type="search"
+              className="form-control shadow-sm"
+              placeholder="Enter a city"
+              id="search-text-input"
+              onChange={handleCity}
+            />
+            <input
+              type="submit"
+              className="btn btn-outline-dark shadow-sm"
+              value="Search"
+            />
+          </div>
+        </form>
+        <WeatherInfo data={weatherData} />
+        <Forecast coordinates={weatherData.coordinates} />
       </div>
-      <hr />
-    </div>
-  );
+    );
+  } else {
+    search();
+    return "Loading...";
+  }
 }
-export default Weather;
