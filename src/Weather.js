@@ -17,9 +17,10 @@ export default function Weather(props) {
       pressure: response.data.temperature.pressure,
       humidity: response.data.temperature.humidity,
       description: response.data.condition.description,
-      icon: response.data.condition.icon_url,
-      wind: response.data.wind.speed,
+      icon: response.data.condition.icon,
+      wind: Math.round(response.data.wind.speed),
       city: response.data.city,
+      country: response.data.country,
     });
   }
 

@@ -31,7 +31,7 @@ export default function WeatherInfo(props) {
       <hr />
       <div className="row">
         <div className="col-4">
-          <div className="temperature">Now</div>
+          <div className="temperature">Today</div>
           <span id="current">{props.data.temperature}</span>°
         </div>
 
@@ -41,13 +41,13 @@ export default function WeatherInfo(props) {
         </div>
 
         <div className="col-4">
-          <div className="low-temperature">Low</div>
-          <span id="low">{props.data.min}</span>°
+          <div className="country">Country</div>
+          <span id="country">{props.data.country}</span>
         </div>
 
         <div className="col-4">
           <div className="pressure">Pressure</div>
-          <span id="bright">{props.data.pressure}</span>
+          <span id="pressure">{props.data.pressure}</span>
         </div>
 
         <div className="col-4">
@@ -57,7 +57,7 @@ export default function WeatherInfo(props) {
 
         <div className="col-4">
           <div className="feel">Feels Like</div>
-          <span id="dark">{props.data.feels_like}</span>
+          <span id="dark">{props.data.feels_like}°</span>
         </div>
       </div>
       <hr />

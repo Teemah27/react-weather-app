@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import WeatherIcon from "./WeatherIcon";
 
 export default function Temperature(props) {
   const [unit, setUnit] = useState("celsius");
@@ -18,7 +17,6 @@ export default function Temperature(props) {
   if (unit === "celsius") {
     return (
       <div className="WeatherUnit d-inline">
-        <WeatherIcon code={props.data.icon} size={52} alt={props.data.icon} />
         <span className="degrees">{Math.round(props.celsius)}</span>
         <span className="units">
           <a href="/" onClick={setFahrenheit}>
