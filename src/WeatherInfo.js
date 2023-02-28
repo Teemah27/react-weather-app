@@ -32,12 +32,12 @@ export default function WeatherInfo(props) {
       <div className="row">
         <div className="col-4">
           <div className="temperature">Today</div>
-          <span id="current">{props.data.temperature}</span>°
+          <span className="current">{props.data.temperature}</span>°
         </div>
 
         <div className="col-4">
           <div className="speed">Wind</div>
-          <span id="wind">{props.data.wind}</span> m/s
+          <span className="wind">{props.data.wind}</span> m/s
         </div>
 
         <div className="col-4">
